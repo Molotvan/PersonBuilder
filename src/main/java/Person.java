@@ -36,67 +36,67 @@ public class Person {
         return surname;
     }
 
-    public int getAge() throws Exception{
+    public int getAge() throws Exception {
         if (hasAge()) {
-        return age;}
-        else {
+            return age;
+        } else {
             throw new Exception("Возраст не указан");
         }
     }
 
-    public String getCurrentCity() throws Exception{
+    public String getCurrentCity() throws Exception {
         if (hasAddress()) {
-            return currentCity;}
-        else {
+            return currentCity;
+        } else {
             throw new Exception("Адрес не известен");
         }
     }
 
-    public void setAge(int age) throws Exception{
-        if(hasAge()){
+    public void setAge(int age) throws Exception {
+        if (hasAge()) {
             happyBirthday();
         }
         if (age <= 0 || age > 120) {
             throw new IllegalArgumentException("Возраст некорректен");
-        }else{
+        } else {
             this.age = age;
         }
     }
 
-    boolean  hasAge () {
-            return (age != 0);
-        }
+    boolean hasAge() {
+        return (age != 0);
+    }
 
-         boolean  hasAddress () {
-            return (currentCity != null);
-        }
+    boolean hasAddress() {
+        return (currentCity != null);
+    }
 
-        public void happyBirthday () {
-            if (hasAge()) {
-                age = age + 1;
-            }
+    public void happyBirthday() {
+        if (hasAge()) {
+            age = age + 1;
         }
+    }
 
-        public PersonBuilder childBuilder(){
+    public PersonBuilder childBuilder() {
         PersonBuilder childBuilder = new PersonBuilder();
         childBuilder.setSurname(this.surname)
-                    .setAddress(this.currentCity);
+                .setAddress(this.currentCity);
         return childBuilder;
-        }
+    }
 
     @Override
     public String toString() {
-        if(!hasAge() && !hasAddress()){
-        return "Имя: " + name + "\n" + "Фамилия: " + surname + "\n" + "Возраст: " + "Неизвестен" + "\n"
-                + "Адрес: " + "Неизвестен";
-        }else if(!hasAge()){
+        if (!hasAge() && !hasAddress()) {
+            return "Имя: " + name + "\n" + "Фамилия: " + surname + "\n" + "Возраст: " + "Неизвестен" + "\n"
+                    + "Адрес: " + "Неизвестен";
+        } else if (!hasAge()) {
             return "Имя: " + name + "\n" + "Фамилия: " + surname + "\n" + "Возраст: " + "Неизвестен" + "\n"
                     + "Адрес: " + currentCity;
-        }else if(!hasAddress()){
+        } else if (!hasAddress()) {
             return "Имя: " + name + "\n" + "Фамилия: " + surname + "\n" + "Возраст: " + age + "\n"
                     + "Адрес: " + "Неизвестен";
-        }else return "Имя: " + name + "\n" + "Фамилия: " + surname + "\n" + "Возраст: " + age + "\n"
-                    + "Адрес: " + currentCity;
+        } else return "Имя: " + name + "\n" + "Фамилия: " + surname + "\n" + "Возраст: " + age + "\n"
+                + "Адрес: " + currentCity;
     }
 
     @Override
